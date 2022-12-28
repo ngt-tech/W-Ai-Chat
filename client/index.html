@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="icon" href="assets/images/logo/ngt_logo_word.png">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>AI - NGT TECH</title>
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <link rel='stylesheet' href='assets/vendors/css/swiper.min.css'>
+
+    <link href="assets/css/style.css" rel="stylesheet"/>
+
+    <link rel="stylesheet" href="assets/vendors/font-awesome/css/all.min.css"/>
+
+    <link rel="stylesheet" href="assets/vendors/css/normalize.min.css">
+
+    <link rel='stylesheet' href='assets/vendors/css/animate.min.css'>
+    <link href="style.css" rel="stylesheet"/>
+</head>
+<body>
+<div id="app">
+    <div class="container-fluid">
+        <header>
+            <nav id="navbar_top" class="navbar navbar-expand-lg"
+                 style="background: rgba(0,0,0,0.9);font-family: 'DrukWide-Medium-Web'">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="https://ngt-tech.io/" target="_blank">
+                        <img src="assets/images/logo/NGT-logo.png" class="img-fluid logo"
+                             alt=""/>
+                    </a>
+
+                    <div class="collapse-social-icons" style="position: inherit;margin-right: -45%;">
+                        <a class="navbar-brand" href="https://instagram.com/nftz.hk"
+                           style="text-decoration: none;color: white;font-size: 26px"><i class="fa-brands fa-instagram"></i></a>
+                        <a class="navbar-brand" href="https://www.facebook.com/NFTz.hk/"
+                           style="text-decoration: none;color: white;font-size: 26px"><i class="fa-brands fa-facebook"></i></a>
+                    </div>
+
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main_nav"
+                            style="text-decoration: none;color: white;font-size: 25px">
+                        <i class="fa-solid fa-bars text-white"></i>
+                    </button>
+                    <div class="collapse navbar-collapse container" id="main_nav">
+                        <ul class="navbar-nav ms-auto" style="margin-right: 65px">
+                            <li class="nav-item"><a class="nav-link text-white" href="https://ngt-tech.io/index#about" target="_blank"> About NGT </a></li>
+                            <li class="nav-item"><a class="nav-link text-white" href="https://ngt-tech.io/index#service" target="_blank"> Service </a></li>
+                            <li class="nav-item"><a class="nav-link text-white" href="https://ngt-tech.io/index#start" target="_blank"> Start </a></li>
+                            <li class="nav-item"><a class="nav-link text-white" href="https://ngt-tech.io/index#start" target="_blank"> Cert & Audit </a></li>
+                            <li class="nav-item"><a class="nav-link text-white" href="https://ngt-tech.io/index#ngtPass" target="_blank"> NGT Pass </a></li>
+                            <li class="nav-item"><a class="nav-link text-white" href="https://ngt-tech.io/index#press" target="_blank"> Press </a></li>
+                            <li class="nav-item"><a class="nav-link text-white" href="https://ngt-tech.io/indexlogin" style="text-shadow: #fff 0px 0px 5px, #fff 0px 0px 10px, #004303 0px 0px 15px, #004703 0px 0px 20px, #068e0c 0px 0px 30px, #000601 0px 0px 40px, #213422 0px 0px 50px, #000000 0px 0px 75px;" target="_blank"> Early Access </a></li>
+                            <li class="nav-item"><a class="nav-link text-white" href="https://ngt-tech.io/home-zh" target="_blank"> 中文 </a></li>
+                            <li class="nav-item collapse-social-icons-dropdown">
+                            <span class="me-4">
+                                <a href="https://instagram.com/nftz.hk"
+                                   style="text-decoration: none;color: white;font-size: 26px">
+                                    <i class="fa-brands fa-instagram"></i>
+                                </a>
+                            </span>
+                                <span class="me-2">
+                                <a href="https://www.facebook.com/NFTz.hk/"
+                                   style="text-decoration: none;color: white;font-size: 25px">
+                                    <i class="fa-brands fa-facebook"></i>
+                                </a>
+                            </span>
+                            </li>
+                        </ul>
+                    </div>
+                </div> <!-- container-fluid.// -->
+
+            </nav>
+            <coingecko-coin-price-marquee-widget
+                    coin-ids="bitcoin,ethereum,solana,matic-network,tether,binancecoin,litecoin"
+                    currency="usd" background-color="#000" locale="en"
+                    font-color="#ffffff"></coingecko-coin-price-marquee-widget>
+        </header>
+    </div>
+    <section>
+        <img src="assets/images/background.jpeg" class="img-fluid" style="position: fixed;z-index: -20;right: 0;bottom: 0;min-width: 100%;min-height: 100%;object-fit: cover;" alt=""/>
+    </section>
+    <div id="chat_container"></div>
+
+    <form>
+        <textarea cols="1" name="prompt" placeholder="Ask NGT..." rows="1"></textarea>
+        <button type="submit"><img alt="send" src="assets/send.svg"></button>
+    </form>
+</div>
+<script src="assets/js/bootstrap.bundle.min.js"></script>
+
+<script src='assets/vendors/js/jquery.min.js'></script>
+
+<script src='assets/vendors/js/wow.min.js'></script>
+
+<script src='assets/vendors/js/swiper.min.js'></script>
+
+<script src="assets/vendors/js/modernizr.min.js"></script>
+
+<script src="assets/vendors/js/coingecko-coin-price-marquee-widget.js"></script>
+
+<script src="script.js" type="module"></script>
+</body>
+</html>
