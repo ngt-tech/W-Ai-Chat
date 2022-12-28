@@ -92,11 +92,13 @@
              src="assets/images/background.jpeg"
              style="position: fixed;z-index: -20;right: 0;bottom: 0;min-width: 100%;min-height: 100%;object-fit: cover;"/>
     </section>
-    <div id="chat_container"></div>
-
-    <form>
+    <div id="chat_container">
+        <h2 class="text-center text-white content-header mt-2">Welcome to NGT AI, get started in the ChatBox below</h2>
+    </div>
+    <div style="height: 80px" id="margin"></div>
+    <form class="fixed-bottom">
         <textarea cols="1" name="prompt" placeholder="Ask anything to NGT AI (Powered by Ngt-tech.io)"
-                  rows="2"></textarea>
+                  rows="2" minlength="3"></textarea>
         <button type="submit"><img alt="send" src="assets/send.svg"></button>
     </form>
 </div>

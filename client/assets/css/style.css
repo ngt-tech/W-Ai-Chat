@@ -168,6 +168,10 @@ p {
     margin: 0px;
 }
 
+.content-header{
+    font-family: 'body';
+}
+
 .content-paragraph {
     font-family: 'avenirltstd-heavy' !important;
     font-size: 15px;

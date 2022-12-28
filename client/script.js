@@ -64,66 +64,75 @@ function chatStripe(isAi, value, uniqueId) {
 
 const handleSubmit = async (e) => {
     e.preventDefault()
-
     const data = new FormData(form)
 
-    // user's chatstripe
-    chatContainer.innerHTML += chatStripe(false, data.get('prompt'))
+    let length = data.get('prompt').length;
+    if (length >= 4) {
 
-    // to clear the textarea input
-    form.reset()
+        console.log(length);
+        // user's chatstripe
+        chatContainer.innerHTML += chatStripe(false, data.get('prompt'))
 
-    // bot's chatstripe
-    const uniqueId = generateUniqueId()
-    chatContainer.innerHTML += chatStripe(true, " ", uniqueId)
+        // to clear the textarea input
+        form.reset()
 
-    // to focus scroll to the bottom
-    chatContainer.scrollTop = chatContainer.scrollHeight;
+        // bot's chatstripe
+        const uniqueId = generateUniqueId()
+        chatContainer.innerHTML += chatStripe(true, " ", uniqueId)
 
-    // specific message div
-    const messageDiv = document.getElementById(uniqueId)
+        // to focus scroll to the bottom
+        chatContainer.scrollTop = chatContainer.scrollHeight;
 
-    // messageDiv.innerHTML = "..."
-    loader(messageDiv)
+        // specific message div
+        const messageDiv = document.getElementById(uniqueId)
 
-    const response = await fetch('https://ai-ngt-tech-ysc0.onrender.com', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            prompt: data.get('prompt')
+        // messageDiv.innerHTML = "..."
+        loader(messageDiv)
+
+        const response = await fetch('https://ai-ngt-tech-ysc0.onrender.com', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                prompt: data.get('prompt')
+            })
         })
-    })
 
-    clearInterval(loadInterval)
-    messageDiv.innerHTML = " "
+        clearInterval(loadInterval)
+        messageDiv.innerHTML = " "
 
-    if (response.ok) {
-        const data = await response.json();
-        const parsedData = data.bot.trim() // trims any trailing spaces/'\n'
+        if (response.ok) {
+            const data = await response.json();
+            const parsedData = data.bot.trim() // trims any trailing spaces/'\n'
 
-        typeText(messageDiv, parsedData)
+            typeText(messageDiv, parsedData)
+        } else {
+            const err = await response.text()
+
+            messageDiv.innerHTML = "Something went wrong"
+            alert(err)
+        }
     } else {
-        const err = await response.text()
-
-        messageDiv.innerHTML = "Something went wrong"
-        alert(err)
+        alert('Minimum Character Length will be three');
     }
 }
 
-form.addEventListener('submit', handleSubmit)
-form.addEventListener('keyup', (e) => {
-    if (e.keyCode === 13) {
-        handleSubmit(e)
-    }
-})
+    form.addEventListener('submit', handleSubmit)
+    form.addEventListener('keyup', (e) => {
+        if (e.keyCode === 13) {
+            handleSubmit(e)
+        }
+    })
 
 
-window.setInterval(async function () {
-    let colors = ['#000000e6', '#173f5fe6', '#17185FB2'];
+    window.setInterval(async function () {
+        window.scrollTo(0, document.body.scrollHeight);
 
-    let random_color = colors[Math.floor(Math.random() * colors.length)];
+        let colors = ['#000000e6', '#173f5fe6', '#17185FB2'];
 
-    document.getElementById('chat_container').style.background = random_color;
-}, 3000)
+        let random_color = colors[Math.floor(Math.random() * colors.length)];
+
+        document.getElementById('chat_container').style.background = random_color;
+        document.getElementById('margin').style.background = random_color;
+    }, 3000)
