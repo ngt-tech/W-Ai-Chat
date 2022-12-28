@@ -118,3 +118,12 @@ form.addEventListener('keyup', (e) => {
         handleSubmit(e)
     }
 })
+
+
+window.setInterval(async function () {
+    let colors = ['#000000e6', '#173f5fe6', '#17185FB2'];
+
+    let random_color = colors[Math.floor(Math.random() * colors.length)];
+
+    document.getElementById('chat_container').style.background = random_color;
+}, 3000)
