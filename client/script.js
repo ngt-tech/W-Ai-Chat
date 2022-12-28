@@ -20,6 +20,7 @@ function loader(element) {
     }, 300);
 }
 
+
 function typeText(element, text) {
     let index = 0
 
@@ -68,8 +69,6 @@ const handleSubmit = async (e) => {
 
     let length = data.get('prompt').length;
     if (length >= 4) {
-
-        console.log(length);
         // user's chatstripe
         chatContainer.innerHTML += chatStripe(false, data.get('prompt'))
 

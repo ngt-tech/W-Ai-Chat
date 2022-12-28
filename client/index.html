@@ -39,7 +39,8 @@
                                 class="fa-brands fa-facebook"></i></a>
                     </div>
 
-                    <button class="navbar-toggler" data-bs-target="#main_nav" data-bs-toggle="collapse" style="text-decoration: none;color: white;font-size: 25px"
+                    <button class="navbar-toggler" data-bs-target="#main_nav" data-bs-toggle="collapse"
+                            style="text-decoration: none;color: white;font-size: 25px"
                             type="button">
                         <i class="fa-solid fa-bars text-white"></i>
                     </button>
@@ -83,7 +84,8 @@
             </nav>
             <coingecko-coin-price-marquee-widget
                     background-color="#000"
-                    coin-ids="bitcoin,ethereum,solana,matic-network,tether,binancecoin,litecoin" currency="usd" font-color="#ffffff"
+                    coin-ids="bitcoin,ethereum,solana,matic-network,tether,binancecoin,litecoin" currency="usd"
+                    font-color="#ffffff"
                     locale="en"></coingecko-coin-price-marquee-widget>
         </header>
     </div>
@@ -93,12 +95,40 @@
              style="position: fixed;z-index: -20;right: 0;bottom: 0;min-width: 100%;min-height: 100%;object-fit: cover;"/>
     </section>
     <div id="chat_container">
-        <h2 class="text-center text-white content-header mt-2">Welcome to NGT AI, get started in the ChatBox below</h2>
+        <h4 class="text-center text-white content-header mt-2">
+            Welcome to NGT AI<br/>
+            Get started in the ChatBox below
+        </h4>
     </div>
-    <div style="height: 80px" id="margin"></div>
+    <!-- Modal -->
+    <div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade" id="exampleModal" style="background: black"
+         tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Authentication</h5>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <p>Please input required info for access this chat.</p>
+                        <label class="form-label" for="inputUserId">User ID</label>
+                        <input class="form-control" id="inputUserId" type="text">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="inputPassword">Password</label>
+                        <input class="form-control" id="inputPassword" type="password">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" onclick="checkUser()" type="button">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="margin" style="height: 80px"></div>
     <form class="fixed-bottom">
-        <textarea cols="1" name="prompt" placeholder="Ask anything to NGT AI (Powered by Ngt-tech.io)"
-                  rows="2" minlength="3"></textarea>
+        <textarea cols="1" minlength="3" name="prompt"
+                  placeholder="Ask anything to NGT AI (Powered by Ngt-tech.io)" rows="2"></textarea>
         <button type="submit"><img alt="send" src="assets/send.svg"></button>
     </form>
 </div>
@@ -115,5 +145,35 @@
 <script src="assets/vendors/js/coingecko-coin-price-marquee-widget.js"></script>
 
 <script src="script.js" type="module"></script>
+<script>
+    let authentication=0;
+
+    $(document).ready(function () {
+
+        if(authentication==0){
+            $('#exampleModal').modal('show');
+        }else{
+            $('#exampleModal').modal('hide');
+        }
+
+
+        $("#exampleModal").modal({
+            backdrop: 'static',
+            keyboard: false
+        });
+    });
+
+    function checkUser() {
+        let userid = document.getElementById("inputUserId").value;
+        let pass = document.getElementById("inputPassword").value;
+
+        if(userid=='whitelist' && pass=='Ai1228'){
+            authentication=1;
+            $('#exampleModal').modal('hide');
+        }else{
+            alert('Wrong Info Submitted');
+        }
+    }
+</script>
 </body>
 </html>
