@@ -31,10 +31,10 @@
                     </a>
 
                     <div class="collapse-social-icons" style="position: inherit;margin-right: -45%;">
-                        <a class="navbar-brand" href="https://instagram.com/nftz.hk"
+                        <a class="navbar-brand" href="https://www.instagram.com/techs.hk"
                            style="text-decoration: none;color: white;font-size: 26px"><i
                                 class="fa-brands fa-instagram"></i></a>
-                        <a class="navbar-brand" href="https://www.facebook.com/NFTz.hk/"
+                        <a class="navbar-brand" href="https://www.facebook.com/ngttechio"
                            style="text-decoration: none;color: white;font-size: 26px"><i
                                 class="fa-brands fa-facebook"></i></a>
                     </div>
@@ -65,13 +65,13 @@
                                                     target="_blank"> 中文 </a></li>
                             <li class="nav-item collapse-social-icons-dropdown">
                             <span class="me-4">
-                                <a href="https://instagram.com/nftz.hk"
+                                <a href="https://www.instagram.com/techs.hk"
                                    style="text-decoration: none;color: white;font-size: 26px">
                                     <i class="fa-brands fa-instagram"></i>
                                 </a>
                             </span>
                                 <span class="me-2">
-                                <a href="https://www.facebook.com/NFTz.hk/"
+                                <a href="https://www.facebook.com/ngttechio"
                                    style="text-decoration: none;color: white;font-size: 25px">
                                     <i class="fa-brands fa-facebook"></i>
                                 </a>
@@ -148,7 +148,17 @@
 <script>
     let authentication=0;
 
-    $(document).ready(function () {
+    window.onload = function() {
+        if(authentication==0){
+            document.querySelector(".modal").classList.add("show");
+            document.querySelector(".modal").style.display = "block";
+        }else{
+            document.querySelector(".modal").classList.add("hide");
+            document.querySelector(".modal").style.display = "none";
+        }
+    };
+
+/*    $(document).ready(function () {
 
         if(authentication==0){
             $('#exampleModal').modal('show');
@@ -161,7 +171,7 @@
             backdrop: 'static',
             keyboard: false
         });
-    });
+    });*/
 
     function checkUser() {
         let userid = document.getElementById("inputUserId").value;
@@ -169,7 +179,8 @@
 
         if(userid=='whitelist' && pass=='Ai1228'){
             authentication=1;
-            $('#exampleModal').modal('hide');
+            document.querySelector(".modal").classList.add("hide");
+            document.querySelector(".modal").style.display = "none";
         }else{
             alert('Wrong Info Submitted');
         }
