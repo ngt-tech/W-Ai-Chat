@@ -15,26 +15,6 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Function to handle OpenAI API request
-const getOpenAIResponse = async (prompt) => {
-  try {
-    const response = await openai.createCompletion({
-      engine: "gpt-3.5-turbo-0613",
-      prompt: `${prompt}`,
-      temperature: 0.7,
-      max_tokens: 300,
-      top_p: 1,
-      frequency_penalty: 0,
-      presence_penalty: 0,
-    });
-
-    return response.data.choices[0].text;
-  } catch (error) {
-    console.error(error);
-    throw new Error('Error generating OpenAI response');
-  }
-};
-
 app.get('/', async (req, res) => {
   res.status(200).send({
     message: 'Hello from NGT AI',
@@ -45,21 +25,31 @@ app.post('/', async (req, res) => {
   try {
     const prompt = req.body.prompt;
 
+    // Validate prompt
     if (!prompt) {
       return res.status(400).send({
-        error: 'Prompt is required',
+        error: 'Prompt is required in the request body.',
       });
     }
 
-    const botResponse = await getOpenAIResponse(prompt);
+    const response = await openai.createCompletion({
+      model: "gpt-3.5-turbo-1106",
+      prompt: `${prompt}`,
+      temperature: 0.7, // Adjust based on your preference
+      max_tokens: 300, // Adjust based on your preference
+      top_p: 1,
+      frequency_penalty: 0.5,
+      presence_penalty: 0,
+    });
 
     res.status(200).send({
-      bot: botResponse,
+      bot: response.data.choices[0].text,
     });
+
   } catch (error) {
     console.error(error);
     res.status(500).send({
-      error: 'Internal Server Error',
+      error: `Internal Server Error: ${error.message}`,
     });
   }
 });
